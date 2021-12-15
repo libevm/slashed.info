@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Grid, Typography, Table, TableContainer, TableHead, CircularProgress, TableRow, TableBody, TableCell, Container, Tooltip, Link } from '@mui/material'
+import { Grid, Typography, Table, TableContainer, IconButton, TableHead, CircularProgress, TableRow, TableBody, TableCell, Container, Tooltip, Link } from '@mui/material'
 import { Box } from '@mui/system';
+
+import { ReactComponent as Github } from "./icons/github.svg";
 
 const columns = [
   { id: 'clientName', label: 'Eth2 Client', minWidth: 100, tooltip: 'ETH 2.0 client name' },
@@ -85,7 +87,7 @@ function App() {
       <Grid item xs={12}>
         <Container>
           <Typography variant="h4">Slashed.info</Typography>
-          <Typography variant="subtitle1">On ETH 2.0 <Link href='https://blog.ethereum.org/2020/01/13/validated-staking-on-eth2-1-incentives/'>staking incentives. Project inspired by this <Link href="https://twitter.com/RyanBerckmans/status/1470876956652679186">tweet</Link>.</Link></Typography>
+          <Typography variant="subtitle1">On ETH 2.0 <Link href='https://blog.ethereum.org/2020/01/13/validated-staking-on-eth2-1-incentives/'>staking incentives</Link>. Project inspired by this <Link href="https://twitter.com/RyanBerckmans/status/1470876956652679186">tweet</Link>.</Typography>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
@@ -130,6 +132,23 @@ function App() {
               justifyContent: 'center',
             }} style={{ marginTop: '25px' }}><CircularProgress /></Box>
           }
+        </Container>
+
+        <Container>
+          <Box display="flex" justifyContent="center" my={4}>
+            <Box>
+              {[
+                {
+                  Icon: Github,
+                  href: "https://github.com/libevm/slashed.info"
+                },
+              ].map(({ Icon, href }, i) => (
+                <IconButton href={href} target="_blank" size="large">
+                  <Icon fill="text.primary" height={20} width={20} />
+                </IconButton>
+              ))}
+            </Box>
+          </Box>
         </Container>
       </Grid>
     </Grid>
